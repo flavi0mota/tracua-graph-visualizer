@@ -3,6 +3,8 @@
 A real-time, interactive visualization engine for graph pathfinding algorithms.
 
 Built from scratch using **C++17** and **Raylib**.
+<img width="1198" height="834" alt="Screenshot From 2026-01-28 18-13-24" src="https://github.com/user-attachments/assets/bae1bcf0-7741-4031-b709-f73e36aa465d" />
+<img width="1198" height="834" alt="Screenshot From 2026-01-28 18-11-51" src="https://github.com/user-attachments/assets/5ad7be98-e9e2-4afb-8438-33cacf63dcb5" />
 
 ## Features
 
@@ -44,7 +46,7 @@ make
 
 ```
 
-## 🎮 Controls
+## Controls
 
 | Key / Mouse | Action | Context |
 | --- | --- | --- |
@@ -87,20 +89,18 @@ The Main Loop calls `Step()` once every `STEP_DELAY` seconds, allowing the Rende
 
 ### 2. Separation of Concerns (MVC)
 
-The codebase is strictly layered to prevent spaghetti code:
-
 * **Model (`src/core/`)**:
 * `Graph`: A data container. It holds `std::unordered_map` of Nodes and Edges. It knows nothing about pathfinding.
 
 
 * **Controller (`src/algorithms/`)**:
 * `ISolver`: An abstract interface defining the contract (`Initialize`, `Step`, `GetPath`).
-* Concrete Solvers (`BfsSolver`, `AStarSolver`, etc.) manipulate the Model's colors based on their specific logic.
+* Concrete Solvers (`BfsSolver`, `AStarSolver`, etc.) manipulate the Model's colors based on their logic.
 
 
 * **View (`src/ui/`)**:
 * `Renderer`: Handles all Raylib draw calls. It reads the Model and paints circles/lines.
-* `Input`: Maps raw mouse coordinates to Node IDs.
+* `Input`: Maps raw coordinates to Node IDs.
 
 ### 3. Key Data Structures
 
@@ -108,7 +108,7 @@ The codebase is strictly layered to prevent spaghetti code:
 * **Priority Queue:** Used by Dijkstra and A* to order nodes by cost.
 * **Parent Map:** A `std::map<int, int>` that tracks the "breadcrumb trail." When the target is found, we backtrack through this map to reconstruct the final green path.
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```text
 GraphVisualizer/
